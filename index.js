@@ -10,5 +10,36 @@ db.on('error', (err) => {
 });
 
 db.once('open', () => {
-    console.log('Kết nối thành công!');
+    //Khởi tạo schema
+    var Schema = mongoose.Schema;
+
+    var blogSchema = new Schema({
+        title: String,
+        author: String,
+        body: String,
+        hidden: Boolean
+    });
+
+    blogSchema.methods.showMessages = function () {
+        console.log(`Đã thêm bài viết mới có tên ${this.title}`);
+    }
+
+    var Blog = mongoose.model('Blog', blogSchema);
+
+    var dataInsert = {
+        title: 'Lập trình NodeJS căn bản',
+        author: 'Freetuts.net',
+        body: 'Nội dung lập trình NodeJs căn bản',
+        hidden: false
+    }
+
+    var blogCollections = new Blog(dataInsert);
+
+    blogCollections.save().then(data => {
+        console.log(data);
+        blogCollections.showMessages();
+    }).catch(err => {
+        console.error(err);
+    })
 });
+
