@@ -75,8 +75,8 @@ let Student = mongoose.model('student', studentSchema);
 //     },
 //     {
 //         name: {
-//             firstName: 'Lê Nguyễn Anh Tuấn',
-//             lastName: 'Nhựt'
+//             firstName: 'Lê Nguyễn Anh',
+//             lastName: 'Tuấn'
 //         },
 //         man: true,
 //         major: 'Construction Engineering',
